@@ -1,0 +1,202 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beautiful Travel Planner - Data Ready</title>
+    <style>
+        /* (CSS styles remain the same for beauty and layout) */
+        :root {
+            --primary-color: #3b82f6;
+            --secondary-color: #6366f1;
+            --background-color: #f7f9fb;
+            --card-color: #ffffff;
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 40px 0;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card-color);
+            padding: 40px 50px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        fieldset {
+            border: none;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            background-color: #f0f4f8;
+            transition: all 0.3s ease;
+        }
+
+        fieldset:hover {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        legend {
+            font-weight: 700;
+            font-size: 1.4em;
+            color: var(--secondary-color);
+            padding: 0 15px;
+            margin-left: -15px;
+            border-bottom: 3px solid var(--secondary-color);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: #444;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="date"],
+        .form-group input[type="number"],
+        .form-group textarea {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+            width: 100%;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 5px rgba(59, 130, 246, 0.3);
+        }
+        
+        textarea {
+            resize: vertical;
+        }
+
+        .hotel-slot {
+            background-color: var(--card-color);
+            border: 1px solid #dee2e6;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        
+        .hotel-slot h3 {
+            color: var(--primary-color);
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 5px;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .full-width-group {
+            grid-template-columns: 1fr;
+        }
+
+        button[type="submit"] {
+            display: block;
+            width: 50%;
+            margin: 30px auto 10px auto;
+            padding: 15px 30px;
+            background-color: #10b981;
+            color: white;
+            font-size: 1.1em;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.1s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #059669;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 600px) {
+            .container { padding: 20px; }
+            .form-group { grid-template-columns: 1fr; }
+            button[type="submit"] { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>✨ The Ultimate Travel Planner</h1>
+
+    <form action="https://formspree.io/f/xbjvlxpk" method="POST">
+        
+        <fieldset>
+            <legend>📍 General Trip Details</legend>
+            <div class="form-group"><label for="destination">Destination / Trip Name:</label><input type="text" id="destination" name="destination" placeholder="e.g., European Grand Tour" required></div>
+            <div class="form-group"><label for="start_date">Start Date:</label><input type="date" id="start_date" name="start_date" required></div>
+            <div class="form-group"><label for="end_date">End Date:</label><input type="date" id="end_date" name="end_date" required></div>
+            <div class="form-group"><label for="travelers">Number of Travelers:</label><input type="number" id="travelers" name="travelers" min="1" value="1"></div>
+        </fieldset>
+
+        <fieldset>
+            <legend>🏨 Accommodation Tracker (Up to 3 Bookings)</legend>
+            <div class="hotel-slot">
+                <h3>Hotel/Stay #1</h3>
+                <div class="form-group"><label for="hotel1_name">Name:</label><input type="text" id="hotel1_name" name="hotel1_name" placeholder="Hotel Name or City Stay 1"></div>
+                <div class="form-group"><label for="hotel1_checkin">Check-in / Check-out:</label><input type="text" id="hotel1_checkin" name="hotel1_checkin" placeholder="e.g., 2025-12-01 to 2025-12-04"></div>
+                <div class="form-group full-width-group"><label for="hotel1_notes">Confirmation / Address:</label><textarea id="hotel1_notes" name="hotel1_notes" rows="2" placeholder="Booking Ref and Address"></textarea></div>
+            </div>
+            <div class="hotel-slot">
+                <h3>Hotel/Stay #2</h3>
+                <div class="form-group"><label for="hotel2_name">Name:</label><input type="text" id="hotel2_name" name="hotel2_name" placeholder="Hotel Name or City Stay 2"></div>
+                <div class="form-group"><label for="hotel2_checkin">Check-in / Check-out:</label><input type="text" id="hotel2_checkin" name="hotel2_checkin" placeholder="e.g., 2025-12-04 to 2025-12-08"></div>
+                <div class="form-group full-width-group"><label for="hotel2_notes">Confirmation / Address:</label><textarea id="hotel2_notes" name="hotel2_notes" rows="2" placeholder="Booking Ref and Address"></textarea></div>
+            </div>
+            <div class="hotel-slot">
+                <h3>Hotel/Stay #3</h3>
+                <div class="form-group"><label for="hotel3_name">Name:</label><input type="text" id="hotel3_name" name="hotel3_name" placeholder="Hotel Name or City Stay 3"></div>
+                <div class="form-group"><label for="hotel3_checkin">Check-in / Check-out:</label><input type="text" id="hotel3_checkin" name="hotel3_checkin" placeholder="e.g., 2025-12-08 to 2025-12-10"></div>
+                <div class="form-group full-width-group"><label for="hotel3_notes">Confirmation / Address:</label><textarea id="hotel3_notes" name="hotel3_notes" rows="2" placeholder="Booking Ref and Address"></textarea></div>
+            </div>
+        </fieldset>
+        
+        <fieldset>
+            <legend>🛫 Transportation & Flights</legend>
+            <div class="form-group"><label for="flight_carrier">Airline / Carrier:</label><input type="text" id="flight_carrier" name="flight_carrier" placeholder="e.g., Delta Airlines / High-Speed Rail"></div>
+            <div class="form-group"><label for="flight_number">Flight / Train Ref:</label><input type="text" id="flight_number" name="flight_number"></div>
+            <div class="form-group"><label for="arrival_time">Departure / Arrival Times:</label><input type="text" id="arrival_time" name="arrival_time" placeholder="e.g., Dep: 08:00 AM, Arr: 02:00 PM (Local)"></div>
+        </fieldset>
+
+        <fieldset>
+            <legend>💵 Budget & Important Notes</legend>
+            <div class="form-group"><label for="budget">Estimated Total Budget:</label><input type="text" id="budget" name="budget" placeholder="e.g., $3,500 USD"></div>
+            <div class="form-group full-width-group"><label for="general_notes">Itinerary & Planning Notes:</label><textarea id="general_notes" name="general_notes" rows="4" placeholder="Must-see attractions, Packing list, Emergency Contacts, etc."></textarea></div>
+        </fieldset>
+        
+        <button type="submit">Complete Trip Plan</button>
+        
+    </form>
+</div>
+
+</body>
+</html>
